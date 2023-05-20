@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-from .keys import SECRET_KEY
+import os
+# from .keys import SECRET_KEY
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,6 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
+SECRET_KEY = os.environ.get("SECRET_KEY", default='django-insecure-59qoj22hyb41h55@os0lp5k-8hkwt^92o18_k7w!(27^g!r=u8')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -39,11 +41,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'drf_spectacular',
+    'rest_framework',
+
+    # all auth
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.vk',
     'allauth.socialaccount.providers.google',
+    # apps
+    'anime',
 ]
 
 SITE_ID = 1
@@ -73,7 +80,7 @@ ROOT_URLCONF = 'api.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -94,7 +101,7 @@ WSGI_APPLICATION = 'api.wsgi.application'
 
 DATABASES = {
     'default': {
-        'NAME': 'anime_db',
+        'NAME': 'anime',
         'ENGINE': 'django.db.backends.postgresql',
         'USER': 'postgres',
         'PASSWORD': 'Bekhan2005',
@@ -126,9 +133,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/almaty'
 
 USE_I18N = True
 
@@ -146,3 +153,7 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REDIRECT_URL = 'http://127.0.0.1:8000/api/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'anime_covers')
