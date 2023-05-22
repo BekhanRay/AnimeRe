@@ -29,8 +29,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", default='django-insecure-59qoj22hyb41h
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'https://infinite-garden-42264.herokuapp.com/',
-    'https://ancient-depths-96336.herokuapp.com/',
+    'https://glacial-reef-70469.herokuapp.com/',
 ]
 
 
