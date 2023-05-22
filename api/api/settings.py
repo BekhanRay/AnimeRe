@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 # from .keys import SECRET_KEY
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,7 +28,9 @@ SECRET_KEY = os.environ.get("SECRET_KEY", default='django-insecure-59qoj22hyb41h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'https://infinite-garden-42264.herokuapp.com/ '
+]
 
 
 # Application definition
@@ -73,6 +76,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'api.urls'
@@ -100,7 +104,8 @@ WSGI_APPLICATION = 'api.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True),
+    'domestic': {
         'NAME': 'anime',
         'ENGINE': 'django.db.backends.postgresql',
         'USER': 'postgres',
