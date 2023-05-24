@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
-# from .keys import SECRET_KEY
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,9 +27,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", default='django-insecure-59qoj22hyb41h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'https://glacial-reef-70469.herokuapp.com/',
-]
+ALLOWED_HOSTS = []
 
 
 # Application definition

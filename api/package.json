@@ -1,10 +1,10 @@
 {
-  "name": "AnimeRe",
+  "name": "AnimeOn",
   "version": "1.0.0",
   "description": "Anime веб сайт",
   "main": "manage.py",
   "scripts": {
-    "start": "python manage.py runserver",
+    "start": "python3 manage.py runserver",
     "build": "cd frontend && npm install && npm run build"
   },
   "dependencies": {
