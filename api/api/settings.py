@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-SECRET_KEY = os.environ.get("SECRET_KEY", default='django-insecure-59qoj22hyb41h55@os0lp5k-8hkwt^92o18_k7w!(27^g!r=u8')
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -101,14 +101,14 @@ WSGI_APPLICATION = 'api.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600, ssl_require=True),
-    'domestic': {
-        'NAME': 'anime',
+    # 'default': dj_database_url.config(conn_max_age=600, ssl_require=True),
+    'default': {
+        'NAME': os.environ.get('db_name'),
         'ENGINE': 'django.db.backends.postgresql',
-        'USER': 'postgres',
-        'PASSWORD': 'Bekhan2005',
+        'USER': os.environ.get('db_user'),
+        'PASSWORD': os.environ.get('db_password'),
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '',
     },
 }
 
